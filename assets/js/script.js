@@ -6,6 +6,8 @@ const formulario = document.querySelector('.form');
 const entradaUsuario = document.querySelector('.input__search');
 const proximoBotao = document.querySelector('.btn-next');
 const anteriorBotao = document.querySelector('.btn-prev');
+//const caminhoDaImagemLocal = 
+
 
 let buscarPokemon =1;
 
@@ -31,6 +33,11 @@ const renderPokemon = async (pokemon) => {
     pokemonImagem.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
     entradaUsuario.value = '';
     buscarPokemon = data.id;
+    if(buscarPokemon>=650){
+      pokemonImagem.style.display = 'none';
+      //pokemonImagem.src = caminhoDaImagemLocal
+      //pokemonImagem.style.display = 'block';
+    }
   } 
   else {
     pokemonImagem.style.display = 'none';
