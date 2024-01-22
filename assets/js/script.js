@@ -18,6 +18,11 @@ const fetchPokemon = async (pokemon) => {
     return data;
   }
 }
+formulario.addEventListener('submit', (event) => {
+  event.preventDefault();
+  renderPokemon(entradaUsuario.value.toLowerCase());
+  
+});
 
 const renderPokemon = async (pokemon) => {
 
@@ -26,12 +31,6 @@ const renderPokemon = async (pokemon) => {
 
   const data = await fetchPokemon(pokemon);
 
-  
-  formulario.addEventListener('submit', (event) => {
-    event.preventDefault();
-    renderPokemon(entradaUsuario.value.toLowerCase());
-    
-  });
   if (data) {
     pokemonImagem.style.display = 'block';
     pokemonNome.innerHTML = data.name;
