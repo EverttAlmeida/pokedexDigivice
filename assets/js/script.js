@@ -8,7 +8,6 @@ const proximoBotao = document.querySelector('.btn-next');
 const anteriorBotao = document.querySelector('.btn-prev');
 //const caminhoDaImagemLocal = 
 
-
 let buscarPokemon =1;
 
 const fetchPokemon = async (pokemon) => {
@@ -20,21 +19,21 @@ const fetchPokemon = async (pokemon) => {
   }
 }
 
-
-formulario.addEventListener('submit', (event) => {
-  event.preventDefault();
-  renderPokemon(entradaUsuario.value.toLowerCase());
-  
-});
-
 const renderPokemon = async (pokemon) => {
 
-  pokemonNome.innerHTML = 'Carregando...';
+  pokemonNome.innerHTML = 'Loading...';
   pokemonNumero.innerHTML = '';
 
   const data = await fetchPokemon(pokemon);
 
+  
+  formulario.addEventListener('submit', (event) => {
+    event.preventDefault();
+    renderPokemon(entradaUsuario.value.toLowerCase());
+    
+  });
   if (data) {
+    pokemonImagem.style.display = 'block';
     pokemonNome.innerHTML = data.name;
     pokemonNumero.innerHTML = data.id;
     pokemonImagem.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
@@ -52,8 +51,8 @@ const renderPokemon = async (pokemon) => {
     pokemonNumero.innerHTML = '';
   }
 }
-
-anteriorBotao.addEventListener('click', () => {
+  
+  anteriorBotao.addEventListener('click', () => {
   if (buscarPokemon > 1) {
     buscarPokemon -= 1;
     renderPokemon(buscarPokemon);
