@@ -20,6 +20,13 @@ const fetchPokemon = async (pokemon) => {
   }
 }
 
+
+formulario.addEventListener('submit', (event) => {
+  event.preventDefault();
+  renderPokemon(entradaUsuario.value.toLowerCase());
+  
+});
+
 const renderPokemon = async (pokemon) => {
 
   pokemonNome.innerHTML = 'Carregando...';
@@ -45,12 +52,6 @@ const renderPokemon = async (pokemon) => {
     pokemonNumero.innerHTML = '';
   }
 }
-
-formulario.addEventListener('submit', (event) => {
-  event.preventDefault();
-  renderPokemon(entradaUsuario.value.toLowerCase());
-  
-});
 
 anteriorBotao.addEventListener('click', () => {
   if (buscarPokemon > 1) {
